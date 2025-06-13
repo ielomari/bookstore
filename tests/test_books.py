@@ -19,3 +19,8 @@ def test_get_books():
     assert isinstance(data, list)
     assert len(data) >= 1
     assert data[0]["title"] == "Clean Code"
+
+def test_health_check():
+    response = client.get('/health-check')
+    assert response.status_code == 200
+    response.json() == {"message": "Healthy"}
